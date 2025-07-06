@@ -1,150 +1,111 @@
-# 🎨 Talkey 2.0 – Design Process Documentation
+# 🎨 Talkey 2.0 – UI Design Workflow
 
-This document captures the full design journey of **Talkey 2.0**, a no-code voice and chat automation platform for businesses. From UX research to wireframes and final mockups, this process ensures our development is user-centered, clean, and scalable.
-
----
-
-## 📍 1. Design Objectives
-
-- Make complex AI automation feel simple and approachable.
-- Cater to non-technical users (e.g. small business owners).
-- Deliver a clean UI that works across devices.
-- Prioritize clarity, accessibility, and ease of use.
+This document outlines the step-by-step workflow for designing the Talkey 2.0 platform using Figma. It is focused on clarity, simplicity, and a smooth experience for non-technical users.
 
 ---
 
-## 🔍 2. UX Research Summary
+## ✅ STEP 1: Figma Project Setup
 
-We explored similar platforms to draw inspiration and identify user experience gaps:
-
-| Platform     | Observations |
-|--------------|--------------|
-| **Chpter**   | Great commerce flow, but no voice interface or true AI |
-| **Vapi AI**  | Strong voice functionality but lacks a visual no-code builder |
-| **Voiceflow**| Best-in-class assistant flow builder UX |
-| **Zapier**   | Inspires our builder logic layout (drag-and-drop workflows) |
-
-> Key takeaway: Users want multi-channel automation without needing developers.
+- Create a new Figma file
+- Rename it: `Talkey 2.0 - UI Design`
+- Create Pages:
+  - `01 - Wireframes`
+  - `02 - Components`
+  - `03 - Final Screens`
+  - `04 - Prototypes`
 
 ---
 
-## 🧭 3. Information Architecture & User Flow
+## ✏️ STEP 2: Low-Fidelity Wireframes
 
-```
-1. Sign Up / Login
-2. Onboarding (Business type → Use case → Auto assistant setup)
-3. Dashboard Overview
-4. Assistant Flow Builder
-5. Channel Configuration (WhatsApp, Web, Instagram, Voice)
-6. Product / Payment Setup
-7. Analytics & Conversation Logs
-8. Account & Team Settings
-```
+Design the structure using grayscale layouts (boxes and text):
 
----
-
-## 🪟 4. Wireframes (Low-Fidelity Layouts)
-
-> Stored in: `design/wireframes/`
-
-Screens included:
-- `login-wireframe.png`
-- `onboarding-wireframe.png`
-- `dashboard-wireframe.png`
-- `assistant-builder-wireframe.png`
-- `channels-setup-wireframe.png`
-- `products-wireframe.png`
-
-We started with grayscale boxes to focus on layout and flow rather than visual design.
-
----
-
-## 🧱 5. UI Kit (Components System)
-
-We designed reusable components in Figma to speed up frontend development:
-
-- 🟦 Primary Button (Rounded, Shadow)
-- 🔲 Card (White BG, 16px radius)
-- 🟨 Input Field (With label + helper text)
-- 🟪 Sidebar Navigation
-- 🟧 Toggle + Status Chips
-- 🟩 Modal/Dialog Windows
-- 🔵 Table Rows + Icons
-
-Typography: **Inter** (Regular, Medium, Bold)  
-Base Font Sizes: 14px, 16px, 20px  
-Colors:
-- Primary Blue: `#0057FF`
-- Accent Green: `#00C28C`
-- Soft Gray: `#F7F9FC`
-- Text Dark: `#1A1A1A`
-
----
-
-## 🖼️ 6. High-Fidelity Screens (Figma)
-
-Final designs include color, spacing, layout, and states (hover, loading, empty).
-
-Screens completed:
-- Login & Register
+- Login / Register
 - Business Onboarding (3 steps)
-- Main Dashboard (Cards layout)
-- Assistant Builder (Visual editor)
-- Channels Configuration
-- Products Page
+- Main Dashboard
+- Assistant Builder
+- Channel Setup
+- Product & Payment Setup
 - Analytics Page
-- Conversation History
 
-> 🔗 **Figma Link**: [View Project on Figma](https://figma.com/file/YOUR-FIGMA-LINK)
-
----
-
-## 🧠 7. Design Decisions
-
-| Area           | Decision |
-|----------------|----------|
-| Navigation     | Sidebar layout for clarity and scalability |
-| Builder UX     | Linear block stacking for MVP, drag-drop for future |
-| Assistant Tone | Friendly, human-like (e.g., Ava, Sam, Zuri voice presets) |
-| Responsive     | All screens mobile-ready, FAB used on small screens |
-| Color System   | Semantic (Primary, Success, Warning, Disabled) |
+> Focus on layout and navigation before styling.
 
 ---
 
-## 🔄 8. Next Steps (Pre-Development)
+## 🧱 STEP 3: UI Kit (Design System)
 
-- ✅ Final review with stakeholders
-- ⏳ Export and organize assets (SVGs, icons, JSON UI configs)
-- ☑️ Define component props for devs (via Storybook or in README)
-- ☑️ Create Figma → Code workflow documentation
-- ☑️ Start coding frontend structure (React + Tailwind)
+Create and organize reusable components:
+
+- Buttons (Primary, Secondary)
+- Inputs (with labels)
+- Status Chips, Toggles, Tabs
+- Modals, Cards
+- Sidebar Navigation
+
+### Design Tokens
+- Font: **Inter**
+- Primary Color: `#0057FF`
+- Accent Green: `#00C28C`
+- Background Gray: `#F7F9FC`
+- Text Color: `#1A1A1A`
 
 ---
 
-## 📁 Directory Structure
+## 🖼️ STEP 4: High-Fidelity UI Screens
+
+Convert wireframes into fully designed screens:
+
+- Login / Register
+- Onboarding Flow
+- Dashboard (with stats and quick actions)
+- Assistant Builder (visual logic flow)
+- Channels Setup
+- Product Setup
+- Analytics & Feedback
+- Conversation Logs
+
+Use your UI Kit for consistency. Apply spacing and grid rules.
+
+---
+
+## 🔁 STEP 5: Interactive Prototyping
+
+- Use Figma's `Prototype` feature
+- Link buttons to target screens
+- Animate transitions (onboarding → dashboard → builder)
+- Add overlays for modals and dropdowns
+
+---
+
+## 💾 STEP 6: Organize & Share
+
+- Name your frames and components properly
+- Group screens into feature sets
+- Export assets (SVG, PNG)
+- Share Figma link: `https://figma.com/file/YOUR-LINK`
+
+---
+
+## 📁 File Layout in Figma
 
 ```
-design/
-├── process.md                  # This document
-├── wireframes/
-│   ├── login-wireframe.png
-│   ├── builder-wireframe.png
-├── mockups/
-│   ├── dashboard-ui.png
-│   ├── assistant-builder-ui.png
-├── ui-kit/
-│   ├── components.png
-│   ├── buttons.png
+Talkey 2.0 - UI Design
+├── 01 - Wireframes
+├── 02 - Components (UI Kit)
+├── 03 - Final Screens
+├── 04 - Prototypes
 ```
 
 ---
 
-## 💬 Questions or Contributions?
+## 📌 Tips for Efficiency
 
-If you have feedback or want to propose UI changes, open a GitHub issue or submit a design pull request.
+- Use real sample content, not placeholder text
+- Keep it mobile-friendly (responsive layouts)
+- Include error/empty/loading states
+- Use Auto Layout + Components to speed up dev handoff
 
 ---
 
-**Created by:** Richard Reuben  
-**Design Tool:** [Figma](https://figma.com)  
-**Date:** July 2025
+Created by: Richard Reuben  
+Last Updated: July 2025
