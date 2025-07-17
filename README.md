@@ -39,5 +39,4 @@ Sematica unifies **voice, chat, and commerce**. Users can create flow logic usin
 - Export data for reports
 
 ## 📄 License
-
-MIT © 2025 Sematica
+Apache License © 2025 Sematica
