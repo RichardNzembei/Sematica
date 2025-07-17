@@ -2,8 +2,16 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },
-
+  app: {
+    head: {
+      title: 'Sematica',
+      meta: [
+        { name: 'description', content: 'Sematica - Voice + Chat + Commerce AI Platform' },
+      ],
+    },
+  },
   modules: [
+    '@nuxt/ui',
     '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',
@@ -11,6 +19,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     '@nuxt/test-utils',
-    '@nuxt/ui'
+    
   ]
 })
