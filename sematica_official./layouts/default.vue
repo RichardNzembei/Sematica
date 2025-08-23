@@ -1,32 +1,73 @@
 <template>
-  <div class="min-h-screen flex flex-col">
-    <NavbarCard />
-    <main class="flex-grow min-h-screen">
+  <div class="min-h-screen bg-white">
+    <!-- Header -->
+    <AppHeader />
+    
+    <!-- Main Content -->
+    <main class="flex-1">
       <slot />
     </main>
-    <footer class="bg-gray-800 text-white py-6">
-      <div class="container mx-auto px-4 text-center">
-        <p>© 2025 Sematica. All rights reserved.</p>
-        <div class="mt-2 space-x-4">
-          <NuxtLink to="/privacy" class="hover:text-blue-400">Privacy</NuxtLink>
-          <NuxtLink to="/terms" class="hover:text-blue-400">Terms</NuxtLink>
-          <NuxtLink to="/contact" class="hover:text-blue-400">Contact</NuxtLink>
-        </div>
-      </div>
-    </footer>
+    
+    <!-- Footer -->
+    <AppFooter />
+    
+    <!-- Mobile Menu Overlay -->
+    <transition name="fade">
+      <div
+        v-if="mobileMenuOpen"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+        @click="closeMobileMenu"
+      />
+    </transition>
   </div>
 </template>
 
 <script setup>
-import NavbarCard from '~/components/NavbarCard.vue';
+import { ref, provide, watch, onMounted, onUnmounted } from 'vue'
+import { useRoute } from 'vue-router'
+
+// Mobile menu state
+const mobileMenuOpen = ref(false)
+
+// Provide mobile menu state to child components
+provide('mobileMenuOpen', mobileMenuOpen)
+
+const closeMobileMenu = () => {
+  mobileMenuOpen.value = false
+}
+
+// Close mobile menu on route change
+const route = useRoute()
+watch(() => route.path, () => {
+  mobileMenuOpen.value = false
+})
+
+// Handle escape key
+onMounted(() => {
+  if (import.meta.client) {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        mobileMenuOpen.value = false
+      }
+    }
+    
+    document.addEventListener('keydown', handleEscape)
+    
+    onUnmounted(() => {
+      document.removeEventListener('keydown', handleEscape)
+    })
+  }
+})
 </script>
 
 <style scoped>
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.3s ease;
 }
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-out forwards;
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -1,4 +1,157 @@
-/* assets/css/tailwind.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium text-sm transition-colors duration-200;
+  }
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700;
+  }
+  .btn-outline {
+    @apply border border-gray-300 text-gray-700 hover:bg-gray-50;
+  }
+  .btn-ghost {
+    @apply text-gray-700 hover:bg-gray-100;
+  }
+  .btn-xl {
+    @apply px-6 py-3 text-base;
+  }
+  .card {
+    @apply bg-white rounded-lg shadow-soft;
+  }
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-glow hover:-translate-y-1;
+  }
+  .card-glow {
+    @apply shadow-glow;
+  }
+  .nav-link {
+    @apply text-gray-700 hover:text-primary-600 font-medium transition-colors;
+  }
+  .section {
+    @apply py-16 lg:py-24;
+  }
+  .section-lg {
+    @apply py-20 lg:py-32;
+  }
+}
+
+@layer utilities {
+  .bg-dark-900 {
+    background-color: #1a202c;
+  }
+  .bg-gradient-primary {
+    background: linear-gradient(135deg, #3b82f6, #10b981);
+  }
+  .bg-primary-100 {
+    background-color: #dbeafe;
+  }
+  .bg-primary-200 {
+    background-color: #bfdbfe;
+  }
+  .bg-primary-400 {
+    background-color: #60a5fa;
+  }
+  .bg-primary-500 {
+    background-color: #3b82f6;
+  }
+  .bg-primary-600 {
+    background-color: #2563eb;
+  }
+  .bg-primary-700 {
+    background-color: #1d4ed8;
+  }
+  .bg-secondary-100 {
+    background-color: #d1fae5;
+  }
+  .bg-secondary-200 {
+    background-color: #a7f3d0;
+  }
+  .bg-secondary-500 {
+    background-color: #10b981;
+  }
+  .bg-secondary-600 {
+    background-color: #059669;
+  }
+  .bg-accent-100 {
+    background-color: #fefcbf;
+  }
+  .bg-accent-200 {
+    background-color: #fef08a;
+  }
+  .bg-accent-600 {
+    background-color: #d97706;
+  }
+  .bg-green-100 {
+    background-color: #d1fae5;
+  }
+  .bg-purple-100 {
+    background-color: #f3e8ff;
+  }
+  .bg-blue-100 {
+    background-color: #dbeafe;
+  }
+  .text-primary-600 {
+    color: #2563eb;
+  }
+  .text-secondary-500 {
+    color: #10b981;
+  }
+  .text-secondary-600 {
+    color: #059669;
+  }
+  .text-accent-600 {
+    color: #d97706;
+  }
+  .text-green-600 {
+    color: #059669;
+  }
+  .text-purple-600 {
+    color: #7c3aed;
+  }
+  .text-blue-600 {
+    color: #2563eb;
+  }
+  .shadow-glow {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+  }
+  .shadow-soft {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  .shadow-large {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-bounce-light {
+    animation: bounceLight 3s ease-in-out infinite;
+  }
+  @keyframes bounceLight {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  .bg-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20zM40 40H20L40 20z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-secondary-600;
+  }
+}
