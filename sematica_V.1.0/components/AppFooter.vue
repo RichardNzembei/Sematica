@@ -19,14 +19,14 @@
             href="mailto:support@sematicca.com" 
             class="text-sm text-gray-500 hover:text-gray-700 transition-colors flex items-center"
           >
-            <i class="fas fa-envelope mr-2"></i>
+            <i class="fas fa-envelope mr-2"/>
             Support
           </a>
           <RouterLink 
             to="/help" 
             class="text-sm text-gray-500 hover:text-gray-700 transition-colors flex items-center"
           >
-            <i class="fas fa-question-circle mr-2"></i>
+            <i class="fas fa-question-circle mr-2"/>
             Help
           </RouterLink>
           <RouterLink 
