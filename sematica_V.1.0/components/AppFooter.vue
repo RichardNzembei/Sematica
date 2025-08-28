@@ -6,17 +6,17 @@
         <div class="space-y-6">
           <div class="flex items-center space-x-2">
                       <img
-          src="../assets/img/SEMATICA.png"
-          alt="Sematica Icon"
+             src="../assets/img/SEMATICA.png"
+          alt="sematicca Icon"
           class="w-10 h-10 object-contain"
         >
 
-            <span class="text-2xl font-bold text-white">Sematica</span>
+            <span class="text-2xl font-bold text-white">sematicca</span>
           </div>
           <p class="text-gray-400 max-w-xs">
             Automate your business with AI-driven chat, voice, and commerce solutions.
           </p>
-          <div class="space-y-4">
+          <div class="space-y-4 pt-4">
             <h3 class="text-lg font-bold text-white">Stay Updated</h3>
             <form class="flex flex-col sm:flex-row gap-2" @submit.prevent="subscribeNewsletter">
               <input
@@ -95,12 +95,12 @@
               <NuxtLink to="/about" class="hover:text-blue-400 transition-colors">About</NuxtLink>
             </li>
             <li>
-              <a href="https://app.sematica.com/careers" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors">Careers</a>
+              <a href="https://app.sematicca.com/careers" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors">Careers</a>
             </li>
             <li>
-              <a href="mailto:support@sematica.com" class="hover:text-blue-400 transition-colors flex items-center">
+              <a href="mailto:support@sematicca.com" class="hover:text-blue-400 transition-colors flex items-center">
                 <UIcon name="heroicons:envelope" class="w-5 h-5 mr-2" aria-hidden="true" />
-                support@sematica.com
+                support@sematicca.com
               </a>
             </li>
             <li>
@@ -116,16 +116,16 @@
       <!-- Bottom Bar -->
       <div class="mt-12 pt-8 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-center">
         <p class="text-sm text-gray-400">
-          &copy; {{ new Date().getFullYear() }} Sematica. All rights reserved.
+          &copy; {{ new Date().getFullYear() }} sematicca. All rights reserved.
         </p>
         <div class="flex space-x-4 mt-4 sm:mt-0">
-          <a href="https://x.com/sematica" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors" aria-label="Twitter/X">
+          <a href="https://x.com/sematicca" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors" aria-label="Twitter/X">
             <UIcon name="mdi:twitter" class="w-6 h-6" aria-hidden="true" />
           </a>
-          <a href="https://linkedin.com/company/sematica" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors" aria-label="LinkedIn">
+          <a href="https://linkedin.com/company/sematicca" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors" aria-label="LinkedIn">
             <UIcon name="mdi:linkedin" class="w-6 h-6" aria-hidden="true" />
           </a>
-          <a href="https://facebook.com/sematica" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors" aria-label="Facebook">
+          <a href="https://facebook.com/sematicca" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors" aria-label="Facebook">
             <UIcon name="mdi:facebook" class="w-6 h-6" aria-hidden="true" />
           </a>
         </div>

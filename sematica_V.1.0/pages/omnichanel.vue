@@ -1,34 +1,6 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 font-inter">
-    <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-xl shadow-sm border-b border-gray-200 sticky top-0 z-50">
-      <div class="container mx-auto px-6 py-4">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mr-3">
-              <span class="text-white font-bold text-lg">S</span>
-            </div>
-            <NuxtLink to="/" class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Sematica
-            </NuxtLink>
-          </div>
-          <div class="flex items-center gap-4">
-            <NuxtLink
-              to="/demo"
-              class="px-4 py-2 text-gray-600 hover:text-blue-600 font-medium transition-colors"
-            >
-              Demo
-            </NuxtLink>
-            <NuxtLink
-              to="/get-started"
-              class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
-            >
-              Get Started
-            </NuxtLink>
-          </div>
-        </div>
-      </div>
-    </header>
+
     <!-- Hero Section -->
     <section class="py-20">
       <div class="container mx-auto px-6 text-center">
@@ -297,7 +269,7 @@
     <section class="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
       <div class="container mx-auto px-6 text-center text-white">
         <h2 class="text-3xl md:text-4xl font-bold mb-6">
-          Why Choose Omnichannel with Sematica?
+          Why Choose Omnichannel with Sematicca?
         </h2>
         <p class="text-xl text-white/90 mb-12 max-w-3xl mx-auto">
           Don't limit your business to just one channel. Connect with customers wherever they are,
@@ -343,8 +315,8 @@ import { ref, computed } from 'vue';
 
 // Page meta
 definePageMeta({
-  title: 'Omnichannel Support - Connect Every Customer Touchpoint | Sematica',
-  description: "Seamlessly integrate WhatsApp, Web Chat, Instagram, Voice, and more with Sematica's omnichannel platform.",
+  title: 'Omnichannel Support - Connect Every Customer Touchpoint | Sematicca',
+  description: "Seamlessly integrate WhatsApp, Web Chat, Instagram, Voice, and more with Sematicca's omnichannel platform.",
 });
 
 // Reactive data

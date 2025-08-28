@@ -2,7 +2,7 @@
   <section class="container mx-auto px-4 py-12">
     <h2 class="text-4xl font-bold text-gray-800 mb-6 animate-fade-in">Company Onboarding</h2>
     <p class="text-gray-600 max-w-3xl mx-auto mb-8 animate-fade-in" style="animation-delay: 0.2s;">
-      Get started with Sematica by setting up your business profile.
+      Get started with Sematicca by setting up your business profile.
     </p>
     <div class="bg-white p-6 rounded-lg shadow-md max-w-lg mx-auto">
       <form @submit.prevent="submitOnboarding" class="space-y-4">

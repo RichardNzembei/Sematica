@@ -4,9 +4,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
-      title: 'Sematica',
+      title: 'Sematicca',
       meta: [
-        { name: 'description', content: 'Sematica - Voice + Chat + Commerce AI Platform' },
+        { name: 'description', content: 'Sematicca - Voice + Chat + Commerce AI Platform' },
       ],
     },
   },

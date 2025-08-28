@@ -1,117 +1,42 @@
 <template>
-  <section class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex font-inter">
-    <!-- Mobile Sidebar Overlay -->
-    <div 
-      v-if="sidebarOpen" 
-      class="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden"
-      @click="sidebarOpen = false"
-    />
+  <div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 font-inter">
 
-    <!-- Sidebar -->
-    <aside 
-      :class="[
-        'fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white/90 backdrop-blur-xl shadow-xl border-r border-gray-200',
-        'transition-transform duration-300 ease-in-out',
-        sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
-      ]"
-    >
-      <div class="p-6">
-        <div class="flex items-center justify-center mb-8">
-          <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center">
-            <span class="text-white font-bold text-xl">S</span>
-          </div>
-          <span class="ml-3 text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            Sematica
-          </span>
-        </div>
+    <div class="container mx-auto px-4 md:px-6 py-8">
+      <!-- Hero Section -->
+      <section class="py-12 text-center">
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          Real-Time <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Analytics Dashboard</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-3xl mx-auto">
+          Track conversations, revenue, and channel performance in one place. Stay on top of your customer engagement and business growth with live data.
+        </p>
         
-        <nav class="space-y-2">
-          <NuxtLink 
-            v-for="item in navigationItems" 
-            :key="item.path"
-            :to="item.path" 
-            :class="[
-              'flex items-center px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50',
-              'rounded-xl transition-all duration-200 group relative overflow-hidden',
-              $route.path === item.path ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg' : ''
-            ]"
-            @click="sidebarOpen = false"
-          >
-            <i :class="[item.icon, 'mr-3 text-lg group-hover:scale-110 transition-transform']"/> 
-            {{ item.name }}
-            <div v-if="$route.path === item.path" class="absolute right-2 w-2 h-2 bg-white rounded-full animate-pulse"/>
-          </NuxtLink>
-        </nav>
+        <div class="flex flex-col items-center">
+          <p class="mb-6 text-sm md:text-base text-gray-500">
+            Trusted by <span class="font-semibold text-gray-700">500+ businesses</span> in Kenya
+          </p>
 
-        <!-- User Profile in Sidebar -->
-        <div class="mt-8 pt-6 border-t border-gray-200">
-          <div class="flex items-center px-4 py-3 rounded-xl bg-gradient-to-r from-gray-50 to-blue-50">
-            <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
-              <span class="text-white font-semibold text-sm">L</span>
-            </div>
-            <div class="ml-3">
-              <p class="text-sm font-semibold text-gray-800">Levi</p>
-              <p class="text-xs text-gray-500">Admin</p>
+          <div class="flex flex-wrap justify-center gap-3 md:gap-6">
+            <div
+                     v-for="(company, index) in companies" :key="index" 
+                 class="px-5 py-3 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
+              <span class="text-sm md:text-base font-medium text-gray-700">{{ company }}</span>
             </div>
           </div>
         </div>
-      </div>
-    </aside>
+      </section>
 
-    <!-- Main Content -->
-    <div class="flex-1 flex flex-col min-w-0">
-      <!-- Top Navbar -->
-      <header class="bg-white/80 backdrop-blur-xl shadow-sm border-b border-gray-200 px-4 sm:px-6 py-4">
-        <div class="flex justify-between items-center">
-          <div class="flex items-center">
-            <button 
-              class="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors mr-3"
-              @click="sidebarOpen = !sidebarOpen"
-            >
-              <i class="fas fa-bars text-gray-600"/>
-            </button>
-            <div>
-              <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Dashboard Overview
-              </h1>
-              <p class="text-sm text-gray-500 mt-1">Welcome back! Here's what's happening today.</p>
-            </div>
-          </div>
-          
-          <div class="flex items-center gap-4">
-            <!-- Notifications -->
-            <div class="relative">
-              <button class="p-2 rounded-lg hover:bg-gray-100 transition-colors relative">
-                <i class="fas fa-bell text-gray-600"/>
-                <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse"/>
-              </button>
-            </div>
-            
-            <!-- Settings -->
-            <button class="p-2 rounded-lg hover:bg-gray-100 transition-colors">
-              <i class="fas fa-cog text-gray-600"/>
-            </button>
-            
-            <!-- Time Display -->
-            <div class="hidden sm:block text-right">
-              <p class="text-sm font-semibold text-gray-800">{{ currentTime }}</p>
-              <p class="text-xs text-gray-500">{{ currentDate }}</p>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <!-- Main Content -->
-      <main class="flex-1 px-4 sm:px-6 py-8 overflow-y-auto">
+      <!-- Main Dashboard Content -->
+      <main class="space-y-8">
         <!-- Key Metrics Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <div 
             v-for="(metric, index) in metrics" 
             :key="metric.title"
             :class="[
-              'bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl p-6 hover:shadow-2xl',
-              'transition-all duration-300 hover:-translate-y-1 border border-gray-100',
-              'hover:bg-white/90 group cursor-pointer'
+              'bg-white/80 backdrop-blur-sm rounded-2xl p-5 border border-gray-100',
+              'hover:shadow-lg transition-all duration-300 hover:-translate-y-1',
+              'group cursor-pointer'
             ]"
             :style="{ animationDelay: `${index * 100}ms` }"
             class="animate-fade-in"
@@ -120,14 +45,14 @@
               <div
 :class="[
                 'w-12 h-12 rounded-xl flex items-center justify-center',
-                'bg-gradient-to-br group-hover:scale-110 transition-transform',
+                'bg-gradient-to-br group-hover:scale-110 transition-transform duration-300',
                 metric.gradient
               ]">
                 <i :class="[metric.icon, 'text-white text-lg']"/>
               </div>
               <div
 :class="[
-                'px-2 py-1 rounded-full text-xs font-semibold',
+                'px-2.5 py-1 rounded-full text-xs font-semibold',
                 metric.trend > 0 ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
               ]">
                 <i :class="metric.trend > 0 ? 'fas fa-arrow-up' : 'fas fa-arrow-down'"/>
@@ -141,12 +66,12 @@
         </div>
 
         <!-- Charts Section -->
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-8">
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
           <!-- Main Chart -->
-          <div class="xl:col-span-2 bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl p-6 border border-gray-100">
-            <div class="flex items-center justify-between mb-6">
+          <div class="xl:col-span-2 bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-100">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4">
               <h2 class="text-xl font-semibold text-gray-800">Analytics Overview</h2>
-              <div class="flex bg-gray-100 rounded-lg p-1">
+              <div class="flex bg-gray-100 rounded-lg p-1 w-fit">
                 <button 
                   v-for="period in chartPeriods"
                   :key="period"
@@ -170,7 +95,7 @@
           <!-- Side Stats -->
           <div class="space-y-6">
             <!-- Channel Performance -->
-            <div class="bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl p-6 border border-gray-100">
+            <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-100">
               <h3 class="text-lg font-semibold text-gray-800 mb-4">Channel Performance</h3>
               <div class="space-y-4">
                 <div v-for="channel in channels" :key="channel.name" class="flex items-center justify-between">
@@ -192,13 +117,13 @@
             </div>
 
             <!-- Recent Activity -->
-            <div class="bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl p-6 border border-gray-100">
+            <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-100">
               <h3 class="text-lg font-semibold text-gray-800 mb-4">Recent Activity</h3>
               <div class="space-y-3">
                 <div v-for="activity in recentActivity" :key="activity.id" class="flex items-start gap-3">
-                  <div :class="['w-2 h-2 rounded-full mt-2', activity.color]"/>
-                  <div>
-                    <p class="text-sm text-gray-800">{{ activity.text }}</p>
+                  <div :class="['w-2 h-2 rounded-full mt-2 flex-shrink-0', activity.color]"/>
+                  <div class="min-w-0">
+                    <p class="text-sm text-gray-800 truncate">{{ activity.text }}</p>
                     <p class="text-xs text-gray-500">{{ activity.time }}</p>
                   </div>
                 </div>
@@ -208,7 +133,7 @@
         </div>
 
         <!-- Quick Actions Grid -->
-        <div class="bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl p-6 border border-gray-100">
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-100">
           <h2 class="text-xl font-semibold text-gray-800 mb-6">Quick Actions</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <NuxtLink
@@ -216,9 +141,9 @@
               :key="action.title"
               :to="action.path"
               :class="[
-                'group flex flex-col items-center justify-center p-6 rounded-xl',
+                'group flex flex-col items-center justify-center p-5 rounded-xl',
                 'hover:shadow-lg transition-all duration-300 hover:-translate-y-1',
-                'border-2 border-dashed border-gray-200 hover:border-solid',
+                'border border-gray-200 hover:border-transparent',
                 action.bgClass, action.hoverClass
               ]"
             >
@@ -236,7 +161,7 @@
         </div>
       </main>
     </div>
-  </section>
+  </div>
 </template>
 
 <script setup>
@@ -247,22 +172,10 @@ import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
 // Reactive state
-const sidebarOpen = ref(false);
 const selectedPeriod = ref('7D');
 const currentTime = ref('');
 const currentDate = ref('');
-// const conversations = ref(1254);
-// const sales = ref(128500);
-
-// Navigation items
-const navigationItems = ref([
-  { name: 'Dashboard', path: '/dashboard', icon: 'fas fa-chart-line' },
-  { name: 'Assistant Builder', path: '/assistant', icon: 'fas fa-robot' },
-  { name: 'Templates', path: '/integration', icon: 'fas fa-box' },
-  { name: 'Integrations', path: '/omnichanel', icon: 'fas fa-plug' },
-  { name: 'Analytics', path: '/analytics', icon: 'fas fa-chart-bar' },
-  { name: 'Settings', path: '/settings', icon: 'fas fa-cog' }
-]);
+const companies = ref(['TechCorp', 'GrowthCo', 'Xvideos', 'SmartBiz', 'MarketLead', 'NexusKE']);
 
 // Metrics data
 const metrics = ref([
@@ -518,5 +431,6 @@ onUnmounted(() => {
 * {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 </style>

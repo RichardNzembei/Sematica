@@ -1,27 +1,5 @@
 <template>
   <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 font-inter">
-    <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-xl shadow-sm border-b border-gray-200 sticky top-0 z-50">
-      <div class="container mx-auto px-6 py-4">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center mr-3">
-              <span class="text-white font-bold text-lg">S</span>
-            </div>
-            <NuxtLink to="/" class="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Sematica
-            </NuxtLink>
-          </div>
-          <NuxtLink 
-            to="/get-started"
-            class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
-          >
-            Get Started
-          </NuxtLink>
-        </div>
-      </div>
-    </header>
-
     <!-- Hero Section -->
     <section class="py-16">
       <div class="container mx-auto px-6 text-center">
@@ -29,7 +7,7 @@
           Perfect for <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Every Industry</span>
         </h1>
         <p class="text-lg md:text-xl text-gray-600 mb-12 max-w-3xl mx-auto animate-fade-in-delay-200">
-          From restaurants to e-commerce, see how Sematica transforms businesses across Kenya with intelligent automation and seamless customer experiences.
+          From restaurants to e-commerce, see how Sematicca transforms businesses across Kenya with intelligent automation and seamless customer experiences.
         </p>
         
         <!-- Search and Filter -->
@@ -130,7 +108,7 @@
           Ready to Transform Your Business?
         </h2>
         <p class="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-          Join thousands of businesses across Kenya that are already using Sematica to automate their customer interactions.
+          Join thousands of businesses across Kenya that are already using Sematicca to automate their customer interactions.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <NuxtLink
@@ -222,8 +200,8 @@ import AppFooter from '@/components/AppFooter.vue'
 
 // Page meta
 definePageMeta({
-  title: 'Perfect for Every Industry - Sematica',
-  description: 'Discover how Sematica transforms businesses across Kenya with intelligent automation tailored for every industry.'
+  title: 'Perfect for Every Industry - Sematicca',
+  description: 'Discover how Sematicca transforms businesses across Kenya with intelligent automation tailored for every industry.'
 })
 
 // Reactive data
