@@ -5,7 +5,7 @@
       <main class="space-y-8">
         <!-- Welcome Section -->
         <div class="text-center">
-          <h2 class="text-3xl font-bold text-gray-800 mb-4">Welcome to Your Dashboard! 🎉</h2>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">Welcome to Your Dashboard!</h2>
           <p class="text-lg text-gray-600 max-w-2xl mx-auto">
             Get started by adding your first app to unlock powerful analytics and grow your business.
           </p>
@@ -24,7 +24,7 @@
 
         <!-- Quick Actions Grid -->
         <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-100">
-          <h2 class="text-xl font-semibold text-gray-800 mb-6">Add Your First App 🚀</h2>
+          <h2 class="text-xl font-semibold text-gray-800 mb-6">Add Your First App</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <NuxtLink
               to="/commerce/setup"
