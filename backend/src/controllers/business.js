@@ -1,41 +1,73 @@
 const { connectDB } = require('../config/db');
-// Placeholder for Stripe/M-Pesa validation
-const validatePayment = async (req, res, next) => {
-  try {
-    const { api_key, provider } = req.body;
-    const connection = await connectDB();
-    await connection.execute(
-      'INSERT INTO payment_gateways (business_id, api_key, provider, is_valid) VALUES (?, ?, ?, ?)',
-      [req.user.id, api_key, provider, true] // Mock validation
-    );
-    res.json({ message: 'Payment gateway validated' });
-  } catch (error) {
-    next(error);
-  }
-};
 
-const createBusiness = async (req, res, next) => {
+const setupBusiness = async (req, res, next) => {
+  console.log('Starting business setup with data:', {
+    app_type: req.body.app_type,
+    business_name: req.body.business_name,
+    product_categories: req.body.product_categories,
+    store_type: req.body.store_type,
+    cuisine_type: req.body.cuisine_type,
+    seating_capacity: req.body.seating_capacity,
+    delivery_option: req.body.delivery_option,
+    business_email: req.body.business_email,
+    phone: req.body.phone,
+    address: req.body.address,
+    user_id: req.user.id,
+  });
   try {
-    const { name, logo_url, description, contact_info, category, restaurant_type, opening_hours, delivery_zones, branch_info } = req.body;
+    const {
+      app_type,
+      business_name,
+      product_categories,
+      store_type,
+      cuisine_type,
+      seating_capacity,
+      delivery_option,
+      business_email,
+      phone,
+      address,
+    } = req.body;
+    if (!app_type || !business_name || !business_email || !phone || !address) {
+      console.error('Business setup failed: Missing required fields');
+      return res.status(400).json({ message: 'Missing required fields' });
+    }
+    if (app_type === 'E-Commerce' && (!product_categories || !store_type)) {
+      console.error('Business setup failed: Missing E-Commerce fields');
+      return res.status(400).json({ message: 'Missing product categories or store type' });
+    }
+    if (app_type === 'Restaurant' && (!cuisine_type || !seating_capacity || !delivery_option)) {
+      console.error('Business setup failed: Missing Restaurant fields');
+      return res.status(400).json({ message: 'Missing cuisine type, seating capacity, or delivery option' });
+    }
     const connection = await connectDB();
     await connection.execute(
-      'INSERT INTO businesses (user_id, name, logo_url, description, contact_info, category, restaurant_type, opening_hours, delivery_zones, branch_info) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-      [req.user.id, name, logo_url, description, JSON.stringify(contact_info), category, restaurant_type || null, JSON.stringify(opening_hours || {}), JSON.stringify(delivery_zones || {}), JSON.stringify(branch_info || {})]
+      `INSERT INTO businesses (
+        user_id, app_type, business_name, product_categories, store_type,
+        cuisine_type, seating_capacity, delivery_option, business_email, phone, address
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        req.user.id,
+        app_type,
+        business_name,
+        product_categories || null,
+        store_type || null,
+        cuisine_type || null,
+        seating_capacity || null,
+        delivery_option || null,
+        business_email,
+        phone,
+        address,
+      ]
     );
+    console.log('Business setup successful:', { business_name });
     res.status(201).json({ message: 'Business created' });
   } catch (error) {
+    console.error('Business setup failed:', error.message);
+    if (error.code === 'ER_DUP_ENTRY' && error.message.includes('business_name')) {
+      return res.status(400).json({ message: 'Business name already taken' });
+    }
     next(error);
   }
 };
 
-const getBusiness = async (req, res, next) => {
-  try {
-    const connection = await connectDB();
-    const [rows] = await connection.execute('SELECT * FROM businesses WHERE id = ? AND user_id = ?', [req.params.id, req.user.id]);
-    res.json(rows[0]);
-  } catch (error) {
-    next(error);
-  }
-};
-
-module.exports = { createBusiness, getBusiness, validatePayment };
+module.exports = { setupBusiness };

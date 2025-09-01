@@ -19,6 +19,18 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts',
     '@nuxt/test-utils',
-    
-  ]
-})
+    '@pinia/nuxt',
+  ],
+  plugins: [
+    '~/plugins/radix-vue.js',
+  ],
+  runtimeConfig: {
+    public: {
+      apiBase: 'http://localhost:3000', // Backend API base URL
+    },
+  },
+  devServer: {
+    port: 3001, // Avoid conflict with backend on port 3000
+  },
+  css: ['~/assets/css/tailwind.css'], // Ensure Tailwind CSS is included
+});
